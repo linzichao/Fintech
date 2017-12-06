@@ -63,38 +63,7 @@ app.get('/webhook', (req, res) => {
 		}
 });
 
-// const { MessengerBot } = require('bottender');
-// const { createServer } = require('bottender/express');
-
-// const bot = new MessengerBot({
-//   accessToken: 'EAAYzaWcruX0BAKZBVaNG6ipfAUO6iKZCBtyT9YXt0CBHUZCR3wKZBN8rBB5JHHrBhAy1q5QqRMSoVl71ZBzZCELa4tYMJgMgY7YP51KpgxxBZBKLcZBJQBYpIqMyVD2XZBn9kLzJTd6hLfBlZAGfvzSKgG2g6gDgYOLPZBS9TxBxCEFhHZAmaPsVVipY',
-//   appSecret: 'bd48b3ead8fcaa9d4e08200ecca3b5cc',
-// });
-
-// bot.onEvent(async context => {
-//   await context.sendText('Hello World');
-// });
-
-// const server = createServer(bot);
-
-// server.listen(5000, () => {
-//   console.log('server is running on 5000 port...');
-// });
-
-app.post('/webhook/', function (req, res) {
-	let messaging_events = req.body.entry[0].messaging;
-	for (let i = 0; i < messaging_events.length; i++) {
-		let event = req.body.entry[0].messaging[i];
-		let sender = event.sender.id;
-		if (event.message && event.message.text) {
-			let text = event.message.text;
-			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200));
-		}
-	}
-	res.sendStatus(200);
-})
-
-const token = "EAAYzaWcruX0BACNZCdWoodwZAqLaNSJJPhYHhRTtuWVZCQJO8GkysO4QmEZAkX6SBN9ZC14MzK1cFPZBO3ztS5rd7NuqCutHwguZALXYMnwM6I2wvMsRh8djIZCIqxmiUNZArWNxkFon1hIvMGspzHPY8e257ApXo2FfW7mbGyZBdUBLCtHtsOeEfs"
+const token = "EAAYzaWcruX0BADfd3s1nTdNBdLRoTCP52YKhjjrZCyM4a9zZAzjUZAbmnZAIazXV3ScfnHZBCZBVSMT1oUOL2ZBSRvgpKb2bBuSs7a3mwyAHaaAVvA5RjFwbpMDlluo5wYqHzdT0RQYexUaIaniN23L41TTAGSKW1ZBUgnepytJLyJh0z7MAZAZBZB6"
 
 function sendTextMessage(sender, text) {
 	let messageData = { text:text }
@@ -114,3 +83,16 @@ function sendTextMessage(sender, text) {
 		}
 	})
 }
+
+app.post('/webhook/', function (req, res) {
+	let messaging_events = req.body.entry[0].messaging;
+	for (let i = 0; i < messaging_events.length; i++) {
+		let event = req.body.entry[0].messaging[i];
+		let sender = event.sender.id;
+		if (event.message && event.message.text) {
+			let text = event.message.text;
+			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200));
+		}
+	}
+	res.sendStatus(200);
+})
