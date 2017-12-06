@@ -15,3 +15,11 @@ const server = createServer(bot);
 server.listen(5000, () => {
   console.log('server is running on 5000 port...');
 });
+
+
+server.get('/webhook/', function (req, res) {
+	  if (req.query['hub.verify_token'] === '3191') {
+		  res.send(req.query['hub.challenge'])
+	  }
+	  res.send('Error, wrong token')
+})
