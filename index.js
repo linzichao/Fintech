@@ -63,9 +63,12 @@ app.get('/webhook', (req, res) => {
 		}
 });
 
-const token = "EAAKRaozIOZCYBAAB380FETR4VRJu5cY5Se1wWtXQsJVeMuOCqizfaOAXSkaTsPUg4ACKuSZB5SrTt5BVaFTMNMA1ZCk5aZCZB8EEuuHZAnpspkifPMlYxfCI2MVbhqPGgZAzjYfhPND1uoH6fUt2txM4MN2lB5bPJiax4vE0NOXl6NpcavUyedE"
+//const token = "EAAKRaozIOZCYBAAB380FETR4VRJu5cY5Se1wWtXQsJVeMuOCqizfaOAXSkaTsPUg4ACKuSZB5SrTt5BVaFTMNMA1ZCk5aZCZB8EEuuHZAnpspkifPMlYxfCI2MVbhqPGgZAzjYfhPND1uoH6fUt2txM4MN2lB5bPJiax4vE0NOXl6NpcavUyedE"
 
 function sendTextMessage(sender, text) {
+
+	const token = "EAAKRaozIOZCYBAAB380FETR4VRJu5cY5Se1wWtXQsJVeMuOCqizfaOAXSkaTsPUg4ACKuSZB5SrTt5BVaFTMNMA1ZCk5aZCZB8EEuuHZAnpspkifPMlYxfCI2MVbhqPGgZAzjYfhPND1uoH6fUt2txM4MN2lB5bPJiax4vE0NOXl6NpcavUyedE"
+
 	let messageData = { text:text }
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
