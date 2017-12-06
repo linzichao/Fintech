@@ -2,8 +2,8 @@ const { MessengerBot } = require('bottender');
 const { createServer } = require('bottender/express');
 
 const bot = new MessengerBot({
-  accessToken: '__FILL_YOUR_TOKEN_HERE__',
-  appSecret: '__FILL_YOUR_SECRET_HERE__',
+  accessToken: 'EAAYzaWcruX0BAAeQGxcZBZAyMV18eOeCsRlqWIJA47oQzDtwUq9GNZAVA5cgNn6V0GhMTmkovDGggy2uUYnZAOWN0RJguaDeVsTcwem1LahaPuw6Cp9qWPIGweVwGNZA16ZCrYLvcilR6q4Hamn8PVvtEKCrQzFjAV6sneWiki6wqZAoz7hDvg6',
+  appSecret: 'bd48b3ead8fcaa9d4e08200ecca3b5cc',
 });
 
 bot.onEvent(async context => {
