@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "bottender": "latest"
+    "bottender": "latest",
+    "express": "^4.16.2"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
