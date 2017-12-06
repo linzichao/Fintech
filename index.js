@@ -63,7 +63,7 @@ app.get('/webhook', (req, res) => {
 		}
 });
 
-const token = "EAAYzaWcruX0BADfd3s1nTdNBdLRoTCP52YKhjjrZCyM4a9zZAzjUZAbmnZAIazXV3ScfnHZBCZBVSMT1oUOL2ZBSRvgpKb2bBuSs7a3mwyAHaaAVvA5RjFwbpMDlluo5wYqHzdT0RQYexUaIaniN23L41TTAGSKW1ZBUgnepytJLyJh0z7MAZAZBZB6"
+const token = "EAAKRaozIOZCYBAAB380FETR4VRJu5cY5Se1wWtXQsJVeMuOCqizfaOAXSkaTsPUg4ACKuSZB5SrTt5BVaFTMNMA1ZCk5aZCZB8EEuuHZAnpspkifPMlYxfCI2MVbhqPGgZAzjYfhPND1uoH6fUt2txM4MN2lB5bPJiax4vE0NOXl6NpcavUyedE"
 
 function sendTextMessage(sender, text) {
 	let messageData = { text:text }
