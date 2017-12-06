@@ -1,3 +1,5 @@
+const bodyParser = require('body-parser')
+const request = require('request')
 const { MessengerBot } = require('bottender');
 const { createServer } = require('bottender/express');
 
@@ -12,14 +14,19 @@ bot.onEvent(async context => {
 
 const server = createServer(bot);
 
+server.use(bodyParser.json());
+
 server.listen(5000, () => {
   console.log('server is running on 5000 port...');
 });
 
+server.get('/', function (req, res) {
+	res.send('Hello world, I am a chat bot');
+});
 
 server.get('/webhook/', function (req, res) {
 	  if (req.query['hub.verify_token'] === '3191') {
-		  res.send(req.query['hub.challenge'])
+		  res.send(req.query['hub.challenge']);
 	  }
-	  res.send('Error, wrong token')
-})
+	  res.send('Error, wrong token');
+});
