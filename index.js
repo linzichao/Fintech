@@ -82,16 +82,16 @@ app.get('/webhook', (req, res) => {
 // });
 
 app.post('/webhook/', function (req, res) {
-	let messaging_events = req.body.entry[0].messaging
+	let messaging_events = req.body.entry[0].messaging;
 	for (let i = 0; i < messaging_events.length; i++) {
-		let event = req.body.entry[0].messaging[i]
-		let sender = event.sender.id
+		let event = req.body.entry[0].messaging[i];
+		let sender = event.sender.id;
 		if (event.message && event.message.text) {
-			let text = event.message.text
-			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+			let text = event.message.text;
+			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200));
 		}
 	}
-	res.sendStatus(200)
+	res.sendStatus(200);
 })
 
 const token = "EAAYzaWcruX0BACNZCdWoodwZAqLaNSJJPhYHhRTtuWVZCQJO8GkysO4QmEZAkX6SBN9ZC14MzK1cFPZBO3ztS5rd7NuqCutHwguZALXYMnwM6I2wvMsRh8djIZCIqxmiUNZArWNxkFon1hIvMGspzHPY8e257ApXo2FfW7mbGyZBdUBLCtHtsOeEfs"
