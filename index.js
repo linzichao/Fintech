@@ -61,4 +61,22 @@ app.get('/webhook', (req, res) => {
 				res.sendStatus(403);      
 			}
 		}
-	});
+});
+
+const { MessengerBot } = require('bottender');
+const { createServer } = require('bottender/express');
+
+const bot = new MessengerBot({
+  accessToken: 'EAAYzaWcruX0BAKZBVaNG6ipfAUO6iKZCBtyT9YXt0CBHUZCR3wKZBN8rBB5JHHrBhAy1q5QqRMSoVl71ZBzZCELa4tYMJgMgY7YP51KpgxxBZBKLcZBJQBYpIqMyVD2XZBn9kLzJTd6hLfBlZAGfvzSKgG2g6gDgYOLPZBS9TxBxCEFhHZAmaPsVVipY',
+  appSecret: 'bd48b3ead8fcaa9d4e08200ecca3b5cc',
+});
+
+bot.onEvent(async context => {
+  await context.sendText('Hello World');
+});
+
+const server = createServer(bot);
+
+server.listen(5000, () => {
+  console.log('server is running on 5000 port...');
+});
