@@ -45,7 +45,13 @@ app.post('/webhook/', function (req, res) {
 				//sendGenericMessage(sender)
 				continue
 			}
-			sendTextMessage(sender, "[1]Text received, echo: " + text.substring(0, 200))
+			
+			//check if is lookup query
+			if (text.search("查詢") != -1){
+				sendTextMessage(sender, "got in 查詢!")
+			}
+
+			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
 		}
 		if (event.postback) {
 			let text = JSON.stringify(event.postback)
