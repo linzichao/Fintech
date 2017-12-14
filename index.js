@@ -49,9 +49,11 @@ app.post('/webhook/', function (req, res) {
 			//check if is lookup query
 			if (text.search("查詢") != -1){
 				sendTextMessage(sender, "got in 查詢!" + sender.toString())
+				StartAutoSending();
+			}else{
+				sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
 			}
 
-			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
 		}
 		if (event.postback) {
 			let text = JSON.stringify(event.postback)
@@ -61,6 +63,18 @@ app.post('/webhook/', function (req, res) {
 	}
 	res.sendStatus(200)
 })
+
+
+//automatically send messages to someone: 1971797792849533
+var SendingTimer
+
+function StartAutoSending(){
+	SendingTimer = setInterval(sendTextMessage, 10000, 1971797792849533, "test message!");
+}
+
+function StopAutoSending(){
+	clearInterval(SendingTimer);
+}
 
 
 // recommended to inject access tokens as environmental variables, e.g.
