@@ -49,8 +49,9 @@ app.post('/webhook/', function (req, res) {
 			//check if is lookup query
 			if (text.search("查詢") != -1){
 				sendTextMessage(sender, "got in 查詢!" + sender.toString())
+				StartAutoSending();
+			}else if (text.search("停止") != -1){
 				StopAutoSending();
-				//StartAutoSending();
 			}else{
 				sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
 			}
