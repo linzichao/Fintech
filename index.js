@@ -114,7 +114,7 @@ function sendBox(sender){
 		text: "Here's a quick reply!",
     	quick_replies:[
       	{
-        	content_type:text,
+        	content_type:"text",
         	title:"testbox",
         	payload:"payload"
       	}
