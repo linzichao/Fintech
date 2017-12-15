@@ -55,6 +55,8 @@ app.post('/webhook/', function (req, res) {
 				StopAutoSending();
 			}else if (text.search("PSID") != -1){
 				sendTextMessage(sender, "ID: " + sender.toString())
+			}else if (text.search("testBOX") != -1){
+				sendBox(sender)	
 			}else{
 				sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
 			}
@@ -108,6 +110,26 @@ function sendTextMessage(sender, text) {
 
 function sendBox(sender){
 	
+	let messageData = {
+		text: "Here's a quick reply!",
+    	quick_replies:[
+      	{
+        	content_type:text,
+        	title:"Search",
+        	payload:"payload",
+        	image_url:"http://example.com/img/red.png"
+      	},
+      	{
+        	content_type:location
+      	},
+      	{
+        	content_type:text,
+        	title:"Something Else",
+        	payload:"payload"
+      	}
+    	]
+	}
+
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
 		qs: {access_token:token},
