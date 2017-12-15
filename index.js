@@ -47,10 +47,10 @@ app.post('/webhook/', function (req, res) {
 			}
 			
 			//check if is lookup query
-			if (text.search("開始") != -1){
+			if (text.search("開始計時") != -1){
 				sendTextMessage(sender, "Started Timer!" + sender.toString())
 				StartAutoSending();
-			}else if (text.search("停止") != -1){
+			}else if (text.search("停止計時") != -1){
 				sendTextMessage(sender, "Stopped Timer!" + sender.toString())
 				StopAutoSending();
 			}else if (text.search("PSID") != -1){
