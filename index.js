@@ -115,16 +115,7 @@ function sendBox(sender){
     	quick_replies:[
       	{
         	content_type:text,
-        	title:"Search",
-        	payload:"payload",
-        	image_url:"http://example.com/img/red.png"
-      	},
-      	{
-        	content_type:location
-      	},
-      	{
-        	content_type:text,
-        	title:"Something Else",
+        	title:"testbox",
         	payload:"payload"
       	}
     	]
