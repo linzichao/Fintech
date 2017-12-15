@@ -47,11 +47,14 @@ app.post('/webhook/', function (req, res) {
 			}
 			
 			//check if is lookup query
-			if (text.search("查詢") != -1){
-				sendTextMessage(sender, "got in 查詢!" + sender.toString())
+			if (text.search("開始") != -1){
+				sendTextMessage(sender, "Started Timer!" + sender.toString())
 				StartAutoSending();
 			}else if (text.search("停止") != -1){
+				sendTextMessage(sender, "Stopped Timer!" + sender.toString())
 				StopAutoSending();
+			}else if (text.search("PSID") != -1){
+				sendTextMessage(sender, "ID: " + sender.toString())
 			}else{
 				sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
 			}
@@ -101,6 +104,26 @@ function sendTextMessage(sender, text) {
 			console.log('Error: ', response.body.error)
 		}
 	})
+}
+
+function sendBox(sender){
+	
+	request({
+		url: 'https://graph.facebook.com/v2.6/me/messages',
+		qs: {access_token:token},
+		method: 'POST',
+		json: {
+			recipient: {id:sender},
+			message: messageData,
+		}
+	}, function(error, response, body) {
+		if (error) {
+			console.log('Error sending messages: ', error)
+		} else if (response.body.error) {
+			console.log('Error: ', response.body.error)
+		}
+	})
+	
 }
 
 function sendGenericMessage(sender) {
