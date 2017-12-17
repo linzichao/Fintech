@@ -50,13 +50,13 @@ app.post('/webhook/', function (req, res) {
 			
 			//check if is lookup query
 			if (state_sender[sender] !== undefined && state_sender[sender] != 0){
+				state_sender[sender] += 1;
 				demo_started(sender, text);
 			}else if (text.search("Get Started") != -1){
 				sendTextMessage(sender, "你好，林建甫。歡迎使用投資助理。")	
 				sendTextMessage(sender, "接下來開始進行偏好設定:")
 				state_sender[sender] = 0;
 				demo_started(sender, text);
-				state_sender[sender] = 1;
 			}else if (text.search("開始計時") != -1){
 				sendTextMessage(sender, "Started Timer!" + sender.toString())
 				StartAutoSending();
@@ -127,16 +127,51 @@ function demo_started(sender, rev) {
       		{
        		 	content_type: "text",
         		title: "男性",
-				image_url: "https://vignette.wikia.nocookie.net/thewwc/images/5/57/Male_Sign.jpg/revision/latest?cb=20130730202434"
+				image_url: "https://vignette.wikia.nocookie.net/thewwc/images/5/57/Male_Sign.jpg/revision/latest?cb=20130730202434",
+				payload: "payload"
       		},
       		{
        		 	content_type: "text",
         		title: "女性",
-				image_url: "https://s-media-cache-ak0.pinimg.com/originals/67/5f/05/675f05d9e12c74d05566bdf150a722e6.jpg"
+				image_url: "https://s-media-cache-ak0.pinimg.com/originals/67/5f/05/675f05d9e12c74d05566bdf150a722e6.jpg",
+				payload: "payload"
       		}
 
     		]
-		}	
+		}
+	}else if( state_sender[sender] == 1){
+		messageData = {
+			text: "請選擇最有興趣類股",
+    		quick_replies:[
+    	  		{content_type: "text", title: "水泥", payload: "payload"},
+	      		{content_type: "text", title: "食品", payload: "payload"},
+	      		{content_type: "text", title: "塑膠", payload: "payload"},
+	      		{content_type: "text", title: "紡織", payload: "payload"},
+	      		{content_type: "text", title: "光電", payload: "payload"},
+	      		{content_type: "text", title: "半導體", payload: "payload"},
+	      		{content_type: "text", title: "汽車", payload: "payload"},
+	      		{content_type: "text", title: "其他", payload: "payload"}
+    		]
+		}
+	}else if(state_sender[sender] == 2){
+		messageData = {
+			text: "已選擇: 半導體，請選擇最有興趣個股",
+    		quick_replies:[
+      			{content_type: "text", title: "1437 勤益控", payload: "payload"},
+	      		{content_type: "text", title: "2302 麗正", payload: "payload"},
+	      		{content_type: "text", title: "2303 聯電", payload: "payload"},
+	      		{content_type: "text", title: "2311 日月光", payload: "payload"},
+	      		{content_type: "text", title: "2330 台積電", payload: "payload"},
+	      		{content_type: "text", title: "2337 旺宏", payload: "payload"},
+	      		{content_type: "text", title: "2388 威盛", payload: "payload"},
+	      		{content_type: "text", title: "其他", payload: "payload"}
+    		]
+		}
+	}else if(state_sender[sender] == 3){
+		messageData = {
+			text: "已完成初始偏好設定。"
+		}
+		state_sender[sender] = 0;
 	}
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
