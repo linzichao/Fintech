@@ -10,6 +10,8 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 
+var state_sender = {}
+
 app.set('port', (process.env.PORT || 5000))
 
 // parse application/x-www-form-urlencoded
@@ -44,10 +46,14 @@ app.post('/webhook/', function (req, res) {
 				console.log("welcome to chatbot")
 				//sendGenericMessage(sender)
 				continue
-			}
+			
 			
 			//check if is lookup query
-			if (text.search("開始計時") != -1){
+			if (state_sender[sender] !== undefined && state_sender[sender] !== 0){
+				demo_started(sender, text);
+			}else if (text.search("Get Started") != -1){
+				state_sender[sender] = 1;
+			}else if (text.search("開始計時") != -1){
 				sendTextMessage(sender, "Started Timer!" + sender.toString())
 				StartAutoSending();
 			}else if (text.search("停止計時") != -1){
@@ -107,6 +113,12 @@ function sendTextMessage(sender, text) {
 		}
 	})
 }
+
+function demo_started(sender, rev) {
+	
+
+}
+
 
 function sendBox(sender){
 	
