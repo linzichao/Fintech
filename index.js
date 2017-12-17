@@ -49,7 +49,7 @@ app.post('/webhook/', function (req, res) {
 			}
 			
 			//check if is lookup query
-			if (state_sender[sender] !== undefined &&  state_sender[sender] != 0){
+			if (state_sender[sender] !== undefined && state_sender[sender] != 0){
 				demo_started(sender, text);
 			}else if (text.search("Get Started") != -1){
 				sendTextMessage(sender, "你好，林建甫。歡迎使用投資助理。接下來開始進行偏好設定:");	
