@@ -13,10 +13,10 @@ const app = express()
 var mysql = require('mysql')
 
 var con = mysql.createConnection({
-	host: "218.161.32.188",
-	user: "linzichao",
-	password: "3191",
-	database: "FinTech"
+	host: process.env.SQL_HOST,
+	user: process.env.SQL_USER,
+	password: process.env.SQL_PWD,
+	database: process.env.SQL_DB
 });
 
 var sqlstr = "";
@@ -115,8 +115,7 @@ function StopAutoSending(){
 
 
 // recommended to inject access tokens as environmental variables, e.g.
-// const token = process.env.FB_PAGE_ACCESS_TOKEN
-const token = "EAACrNe07uLEBAGSCFpu8h9LC6MZBwMXqJhEMqNpavOj04IBe2EHGtrB7tm3HsQZBMv5smY7sDIirYWRHZAsWaboHFXrPWjldZCtUc0butbDJF7NY7q4BtW5vZAThTzilPYHFN51vTcDuGhSoZBckmN80eDWkM7ODkXD6SAgxngbDqQZAPXjz1hc"
+const token = process.env.PAGE_ACCESS_TOKEN
 
 function sendTextMessage(sender, text) {
 	let messageData = { text:text }
