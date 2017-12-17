@@ -49,8 +49,7 @@ app.post('/webhook/', function (req, res) {
 			}
 			
 			//check if is lookup query
-			if (/*state_sender[sender] !== undefined && */ state_sender[sender] != 0){
-				state_sender[sender] += 1;
+			if (state_sender[sender] !== undefined &&  state_sender[sender] != 0){
 				demo_started(sender, text);
 			}else if (text.search("Get Started") != -1){
 				sendTextMessage(sender, "你好，林建甫。歡迎使用投資助理。接下來開始進行偏好設定:");	
@@ -138,6 +137,7 @@ function demo_started(sender, rev) {
 
     		]
 		}
+		state_sender[sender] = 1;
 	}else if( state_sender[sender] == 1){
 		messageData = {
 			text: "請選擇最有興趣類股",
@@ -152,6 +152,7 @@ function demo_started(sender, rev) {
 	      		{content_type: "text", title: "其他", payload: "payload"}
     		]
 		}
+		state_sender[sender] = 2;
 	}else if(state_sender[sender] == 2){
 		messageData = {
 			text: "已選擇: 半導體，請選擇最有興趣個股",
@@ -166,6 +167,7 @@ function demo_started(sender, rev) {
 	      		{content_type: "text", title: "其他", payload: "payload"}
     		]
 		}
+		state_sender[sender] = 3;
 	}else if(state_sender[sender] == 3){
 		messageData = {
 			text: "已完成初始偏好設定。"
