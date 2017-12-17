@@ -53,22 +53,22 @@ app.post('/webhook/', function (req, res) {
 				state_sender[sender] += 1;
 				demo_started(sender, text);
 			}else if (text.search("Get Started") != -1){
-				sendTextMessage(sender, "你好，林建甫。歡迎使用投資助理。")	
-				sendTextMessage(sender, "接下來開始進行偏好設定:")
+				sendTextMessage(sender, "你好，林建甫。歡迎使用投資助理。");	
+				sendTextMessage(sender, "接下來開始進行偏好設定:");
 				state_sender[sender] = 0;
 				demo_started(sender, text);
 			}else if (text.search("開始計時") != -1){
-				sendTextMessage(sender, "Started Timer!" + sender.toString())
+				sendTextMessage(sender, "Started Timer!" + sender.toString());
 				StartAutoSending();
 			}else if (text.search("停止計時") != -1){
-				sendTextMessage(sender, "Stopped Timer!" + sender.toString())
+				sendTextMessage(sender, "Stopped Timer!" + sender.toString());
 				StopAutoSending();
 			}else if (text.search("PSID") != -1){
-				sendTextMessage(sender, "ID: " + sender.toString())
+				sendTextMessage(sender, "ID: " + sender.toString());
 			}else if (text.search("testBOX") != -1){
-				sendBox(sender)	
+				sendBox(sender);
 			}else{
-				sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+				sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200));
 			}
 
 		}
