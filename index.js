@@ -10,6 +10,24 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 
+var mysql = require('mysql')
+
+var con = mysql.createConnection({
+	host: "218.161.32.188",
+	user: "linzichao",
+	password: "3191",
+	database: "FinTech"
+});
+
+var sqlstr = "";
+con.connect(function(err){
+	if(err) throw err;
+	con.query("SELECT BestFiveSellPrice FROM ImeStockPrice WHERE CompanyID=2330 LIMIT 1",function(err,result,fields){
+		if(err) throw err;
+		sqlstr = result;
+	});
+});
+
 var state_sender = {}
 
 app.set('port', (process.env.PORT || 5000))
@@ -46,6 +64,12 @@ app.post('/webhook/', function (req, res) {
 				console.log("welcome to chatbot")
 				//sendGenericMessage(sender)
 				continue
+			}
+			
+			if(text === 'SQL'){
+
+
+
 			}
 			
 			//check if is lookup query
