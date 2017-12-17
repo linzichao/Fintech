@@ -46,7 +46,7 @@ app.post('/webhook/', function (req, res) {
 				console.log("welcome to chatbot")
 				//sendGenericMessage(sender)
 				continue
-			
+			}	
 			
 			//check if is lookup query
 			if (state_sender[sender] !== undefined && state_sender[sender] != 0){
