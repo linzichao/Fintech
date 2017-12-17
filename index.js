@@ -67,9 +67,7 @@ app.post('/webhook/', function (req, res) {
 			}
 			
 			if(text === 'SQL'){
-
-
-
+				sendTextMessage(sender, sqlstr);
 			}
 			
 			//check if is lookup query
