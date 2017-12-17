@@ -118,7 +118,7 @@ function sendTextMessage(sender, text) {
 }
 
 function demo_started(sender, rev) {
-	messageData = {}
+	let messageData = {}
 	if(state_sender[sender] == 0){
 		messageData = {
 			text: "請問您的性別",
