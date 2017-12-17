@@ -49,7 +49,7 @@ app.post('/webhook/', function (req, res) {
 			}
 			
 			//check if is lookup query
-			if (state_sender[sender] !== undefined && state_sender[sender] != 0){
+			if (state_sender[sender] !== undefined && state_sender[sender] !== 0){
 				state_sender[sender] += 1;
 				demo_started(sender, text);
 			}else if (text.search("Get Started") != -1){
