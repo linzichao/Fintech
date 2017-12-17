@@ -46,15 +46,15 @@ app.post('/webhook/', function (req, res) {
 				console.log("welcome to chatbot")
 				//sendGenericMessage(sender)
 				continue
-			}	
+			}
 			
 			//check if is lookup query
 			if (state_sender[sender] !== undefined && state_sender[sender] != 0){
 				state_sender[sender] += 1;
 				demo_started(sender, text);
 			}else if (text.search("Get Started") != -1){
-			//	sendTextMessage(sender, "你好，林建甫。歡迎使用投資助理。");	
-			//	sendTextMessage(sender, "接下來開始進行偏好設定:");
+				sendTextMessage(sender, "你好，林建甫。歡迎使用投資助理。");	
+				sendTextMessage(sender, "接下來開始進行偏好設定:");
 				state_sender[sender] = 0;
 				demo_started(sender, text);
 			}else if (text.search("開始計時") != -1){
