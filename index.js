@@ -49,9 +49,13 @@ app.post('/webhook/', function (req, res) {
 			
 			
 			//check if is lookup query
-			if (state_sender[sender] !== undefined && state_sender[sender] !== 0){
+			if (state_sender[sender] !== undefined && state_sender[sender] != 0){
 				demo_started(sender, text);
 			}else if (text.search("Get Started") != -1){
+				sendTextMessage(sender, "你好，林建甫。歡迎使用投資助理。")	
+				sendTextMessage(sender, "接下來開始進行偏好設定:")
+				state_sender[sender] = 0;
+				demo_started(sender, text);
 				state_sender[sender] = 1;
 			}else if (text.search("開始計時") != -1){
 				sendTextMessage(sender, "Started Timer!" + sender.toString())
@@ -115,7 +119,41 @@ function sendTextMessage(sender, text) {
 }
 
 function demo_started(sender, rev) {
-	
+	messageData = {}
+	if(state_sender[sender] == 0){
+		messageData = {
+			text: "請問您的性別",
+    		quick_replies:[
+      		{
+       		 	content_type: "text",
+        		title: "男性",
+				image_url: "https://vignette.wikia.nocookie.net/thewwc/images/5/57/Male_Sign.jpg/revision/latest?cb=20130730202434"
+      		},
+      		{
+       		 	content_type: "text",
+        		title: "女性",
+				image_url: "https://s-media-cache-ak0.pinimg.com/originals/67/5f/05/675f05d9e12c74d05566bdf150a722e6.jpg"
+      		}
+
+    		]
+		}	
+	}
+	request({
+		url: 'https://graph.facebook.com/v2.6/me/messages',
+		qs: {access_token:token},
+		method: 'POST',
+		json: {
+			recipient: {id:sender},
+			message: messageData,
+		}
+	}, function(error, response, body) {
+		if (error) {
+			console.log('Error sending messages: ', error)
+		} else if (response.body.error) {
+			console.log('Error: ', response.body.error)
+		}
+	})
+
 
 }
 
