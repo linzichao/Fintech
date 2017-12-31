@@ -294,6 +294,7 @@ function demo_questionnaire(sender, rev) {
 		}
 		state_sender[sender] += 1;
 	}else if( state_sender[sender] == 6){
+		/*
 		sendTextMessage(sender, "test");	
 		messagedata = {
 			text: "曾投資過哪些金融商品?",
@@ -306,6 +307,18 @@ function demo_questionnaire(sender, rev) {
 	      		{content_type: "text", title: "無", payload: "payload"}
     		]
 		}
+		*/
+		messageData = {
+			text: "投資經驗為何?",
+    		quick_replies:[
+    	  		{content_type: "text", title: "沒有經驗", payload: "payload"},
+	      		{content_type: "text", title: "1~3年", payload: "payload"},
+	      		{content_type: "text", title: "4~6年", payload: "payload"},
+	      		{content_type: "text", title: "7~9年", payload: "payload"},
+	      		{content_type: "text", title: "10年以上", payload: "payload"}
+    		]
+		}
+		state_sender[sender] += 1;
 		state_sender[sender] += 1;
 	}else if( state_sender[sender] == 7){
 		messagedata = {
