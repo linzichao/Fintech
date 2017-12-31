@@ -71,7 +71,7 @@ app.post('/webhook/', function (req, res) {
 			}
 
 			if(text === 'reset'){
-				state_sender[sender] = -1;
+				state_sender[sender] = 0;
 			}
 			
 			//check if is lookup query
