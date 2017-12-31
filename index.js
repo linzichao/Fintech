@@ -76,6 +76,7 @@ app.post('/webhook/', function (req, res) {
 			
 			//check if is lookup query
 			if (state_sender[sender] !== undefined && state_sender[sender] != 0){
+				sendTextMessage(sender, "step now:" + state_sender[sender]);	
 				demo_questionnaire(sender, text);
 			}else if (text.search("Get Started") != -1){
 				sendTextMessage(sender, "您好，林建甫。為了提供個人化投資助理服務，開始進行以下問卷:");	
@@ -293,6 +294,7 @@ function demo_questionnaire(sender, rev) {
 		}
 		state_sender[sender] += 1;
 	}else if( state_sender[sender] == 6){
+		sendTextMessage(sender, "test");	
 		messagedata = {
 			text: "曾投資過哪些金融商品?",
     		quick_replies:[
@@ -329,7 +331,7 @@ function demo_questionnaire(sender, rev) {
     		]
 		}
 		state_sender[sender] += 1;	
-	}else if( state_sender[sender] == 9){
+	}else{
 		messageData = {
 			text: "已完成問卷填寫。"
 		}
