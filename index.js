@@ -100,7 +100,6 @@ app.post('/webhook/', function (req, res) {
 			sendTextMessage(sender, "您好，林建甫。為了提供個人化投資助理服務，開始進行以下問卷:");	
 			state_sender[sender] = 0;
 			demo_questionnaire(sender, text);
-			continue
 		}
 	}
 	res.sendStatus(200)
