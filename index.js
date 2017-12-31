@@ -294,20 +294,6 @@ function demo_questionnaire(sender, rev) {
 		}
 		state_sender[sender] += 1;
 	}else if( state_sender[sender] == 6){
-		/*
-		sendTextMessage(sender, "test");	
-		messagedata = {
-			text: "曾投資過哪些金融商品?",
-    		quick_replies:[
-    	  		{content_type: "text", title: "台外幣存款、貨幣型基金、儲蓄型保險", payload: "payload"},
-	      		{content_type: "text", title: "債券、債券型基金", payload: "payload"},
-	      		{content_type: "text", title: "股票、股票型基金、etf", payload: "payload"},
-	      		{content_type: "text", title: "結構型商品、投資型保單", payload: "payload"},
-	      		{content_type: "text", title: "期貨、選擇權或其他衍生性金融商品", payload: "payload"},
-	      		{content_type: "text", title: "無", payload: "payload"}
-    		]
-		}
-		*/
 		messageData = {
 			text: "投資過的金融商品?",
     		quick_replies:[
@@ -322,24 +308,24 @@ function demo_questionnaire(sender, rev) {
 		state_sender[sender] += 1;
 	}else if( state_sender[sender] == 7){
 		messageData = {
-			text: "投資經驗為何?",
+			text: "整體投資資產下跌超過15%，對您生活的影響程度為何?",
     		quick_replies:[
-    	  		{content_type: "text", title: "沒有經驗", payload: "payload"},
-	      		{content_type: "text", title: "1~3年", payload: "payload"},
-	      		{content_type: "text", title: "4~6年", payload: "payload"},
-	      		{content_type: "text", title: "7~9年", payload: "payload"},
-	      		{content_type: "text", title: "10年以上", payload: "payload"}
+    	  		{content_type: "text", title: "無法承受", payload: "payload"},
+	      		{content_type: "text", title: "嚴重影響", payload: "payload"},
+	      		{content_type: "text", title: "影響大", payload: "payload"},
+	      		{content_type: "text", title: "影響小", payload: "payload"},
+	      		{content_type: "text", title: "沒有影響", payload: "payload"}
     		]
 		}
 		state_sender[sender] += 1;
 	}else if( state_sender[sender] == 8){
 		messageData = {
-			text: "投資經驗為何?",
+			text: "預計的投資年限?",
     		quick_replies:[
-    	  		{content_type: "text", title: "沒有經驗", payload: "payload"},
-	      		{content_type: "text", title: "1~3年", payload: "payload"},
-	      		{content_type: "text", title: "4~6年", payload: "payload"},
-	      		{content_type: "text", title: "7~9年", payload: "payload"},
+    	  		{content_type: "text", title: "< 1年", payload: "payload"},
+	      		{content_type: "text", title: "1 ~ 3年", payload: "payload"},
+	      		{content_type: "text", title: "3 ~ 6年", payload: "payload"},
+	      		{content_type: "text", title: "6 ~ 10年", payload: "payload"},
 	      		{content_type: "text", title: "10年以上", payload: "payload"}
     		]
 		}
