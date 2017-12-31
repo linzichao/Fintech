@@ -291,7 +291,7 @@ function demo_questionnaire(sender, rev) {
 	      		{content_type: "text", title: "10年以上", payload: "payload"}
     		]
 		}
-		state_sender[sender] += 1;
+		state_sender[sender] += 2;
 	}else if( state_sender[sender] == 6){
 		messagedata = {
 			text: "曾投資過哪些金融商品?",
@@ -331,7 +331,7 @@ function demo_questionnaire(sender, rev) {
 		state_sender[sender] += 1;	
 	}else if( state_sender[sender] == 9){
 		messageData = {
-			text: "已完成初始偏好設定。"
+			text: "已完成問卷填寫。"
 		}
 		state_sender[sender] = 0;
 	}
