@@ -79,7 +79,7 @@ app.post('/webhook/', function (req, res) {
 				//sendTextMessage(sender, "step now:" + state_sender[sender]);	
 				demo_questionnaire(sender, text);
 			}else if (text.search("Get Started") != -1){
-				sendTextMessage(sender, "您好，林建甫。為了提供個人化投資助理服務，開始進行以下問卷:");	
+				//sendTextMessage(sender, "您好，林建甫。為了提供個人化投資助理服務，開始進行以下問卷:");	
 				state_sender[sender] = 0;
 				demo_questionnaire(sender, text);
 			}else if (text.search("開始計時") != -1){
@@ -223,7 +223,7 @@ function demo_questionnaire(sender, rev) {
 	let messageData = {}
 	if(state_sender[sender] == 0){
 		messageData = {
-			text: "個人年收入(萬)?",
+			text: "您好，林建甫。為了提供個人化投資助理服務，開始進行以下問卷:\n個人年收入(萬)?",
     		quick_replies:[
     	  		{content_type: "text", title: "0   ~ 50", payload: "payload"},
 	      		{content_type: "text", title: "51  ~ 100", payload: "payload"},
