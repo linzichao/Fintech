@@ -285,13 +285,13 @@ function demo_questionnaire(sender, rev) {
 			text: "投資經驗為何?",
     		quick_replies:[
     	  		{content_type: "text", title: "沒有經驗", payload: "payload"},
-	      		{content_type: "text", title: "1 ~ 3年", payload: "payload"},
-	      		{content_type: "text", title: "4 ~ 6年", payload: "payload"},
-	      		{content_type: "text", title: "7 ~ 9年", payload: "payload"},
+	      		{content_type: "text", title: "1~3年", payload: "payload"},
+	      		{content_type: "text", title: "4~6年", payload: "payload"},
+	      		{content_type: "text", title: "7~9年", payload: "payload"},
 	      		{content_type: "text", title: "10年以上", payload: "payload"}
     		]
 		}
-		state_sender[sender] += 2;
+		state_sender[sender] += 1;
 	}else if( state_sender[sender] == 6){
 		messagedata = {
 			text: "曾投資過哪些金融商品?",
@@ -321,11 +321,11 @@ function demo_questionnaire(sender, rev) {
 		messagedata = {
 			text: "預計投資年限?",
     		quick_replies:[
-    	  		{content_type: "text", title: "< 1年", payload: "payload"},
+    	  		{content_type: "text", title: "<1年", payload: "payload"},
 	      		{content_type: "text", title: "1年（含）以上～未滿3年", payload: "payload"},
 	      		{content_type: "text", title: "3年（含）以上～未滿6年", payload: "payload"},
 	      		{content_type: "text", title: "6年（含）以上～未滿10年", payload: "payload"},
-	      		{content_type: "text", title: "> 10年", payload: "payload"}
+	      		{content_type: "text", title: ">10年", payload: "payload"}
     		]
 		}
 		state_sender[sender] += 1;	
