@@ -77,10 +77,10 @@ app.post('/webhook/', function (req, res) {
 			//check if is lookup query
 			if (state_sender[sender] !== undefined && state_sender[sender] != 0){
 				demo_questionnaire(sender, text);
-			//}else if (text.search("Get Started") != -1){
-			//	sendTextMessage(sender, "您好，林建甫。為了提供個人化投資助理服務，開始進行以下問卷:");	
-			//	state_sender[sender] = 0;
-			//	demo_questionnaire(sender, text);
+			}else if (text.search("Get Started") != -1){
+				sendTextMessage(sender, "您好，林建甫。為了提供個人化投資助理服務，開始進行以下問卷:");	
+				state_sender[sender] = 0;
+				demo_questionnaire(sender, text);
 			}else if (text.search("開始計時") != -1){
 				sendTextMessage(sender, "Started Timer!" + sender.toString());
 				StartAutoSending();
@@ -96,7 +96,7 @@ app.post('/webhook/', function (req, res) {
 			}
 
 		}
-		if (event.postback) {
+		if (event.postback && false) {
 			sendTextMessage(sender, "您好，林建甫。為了提供個人化投資助理服務，開始進行以下問卷:");	
 			state_sender[sender] = 0;
 			demo_questionnaire(sender, text);
