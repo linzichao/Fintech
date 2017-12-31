@@ -76,7 +76,7 @@ app.post('/webhook/', function (req, res) {
 			
 			//check if is lookup query
 			if (state_sender[sender] !== undefined && state_sender[sender] != 0){
-				sendTextMessage(sender, "step now:" + state_sender[sender]);	
+				//sendTextMessage(sender, "step now:" + state_sender[sender]);	
 				demo_questionnaire(sender, text);
 			}else if (text.search("Get Started") != -1){
 				sendTextMessage(sender, "您好，林建甫。為了提供個人化投資助理服務，開始進行以下問卷:");	
@@ -309,6 +309,19 @@ function demo_questionnaire(sender, rev) {
 		}
 		*/
 		messageData = {
+			text: "投資過的金融商品?",
+    		quick_replies:[
+    	  		{content_type: "text", title: "台外幣存款、貨幣型基金、儲蓄型保險", payload: "payload"},
+	      		{content_type: "text", title: "債券、債券型基金", payload: "payload"},
+	      		{content_type: "text", title: "股票、股票型基金、etf", payload: "payload"},
+	      		{content_type: "text", title: "結構型商品、投資型保單", payload: "payload"},
+	      		{content_type: "text", title: "期貨、選擇權或其他衍生性金融商品", payload: "payload"},
+	      		{content_type: "text", title: "無", payload: "payload"}
+    		]
+		}
+		state_sender[sender] += 1;
+	}else if( state_sender[sender] == 7){
+		messageData = {
 			text: "投資經驗為何?",
     		quick_replies:[
     	  		{content_type: "text", title: "沒有經驗", payload: "payload"},
@@ -319,31 +332,18 @@ function demo_questionnaire(sender, rev) {
     		]
 		}
 		state_sender[sender] += 1;
-		state_sender[sender] += 1;
-	}else if( state_sender[sender] == 7){
-		messagedata = {
-			text: "整體投資資產下跌超過15%，對您生活的影響程度為何?",
-    		quick_replies:[
-    	  		{content_type: "text", title: "無法承受", payload: "payload"},
-	      		{content_type: "text", title: "影響嚴重", payload: "payload"},
-	      		{content_type: "text", title: "影響大", payload: "payload"},
-	      		{content_type: "text", title: "影響小", payload: "payload"},
-	      		{content_type: "text", title: "無影響", payload: "payload"}
-    		]
-		}
-		state_sender[sender] += 1;	
 	}else if( state_sender[sender] == 8){
-		messagedata = {
-			text: "預計投資年限?",
+		messageData = {
+			text: "投資經驗為何?",
     		quick_replies:[
-    	  		{content_type: "text", title: "<1年", payload: "payload"},
-	      		{content_type: "text", title: "1年（含）以上～未滿3年", payload: "payload"},
-	      		{content_type: "text", title: "3年（含）以上～未滿6年", payload: "payload"},
-	      		{content_type: "text", title: "6年（含）以上～未滿10年", payload: "payload"},
-	      		{content_type: "text", title: ">10年", payload: "payload"}
+    	  		{content_type: "text", title: "沒有經驗", payload: "payload"},
+	      		{content_type: "text", title: "1~3年", payload: "payload"},
+	      		{content_type: "text", title: "4~6年", payload: "payload"},
+	      		{content_type: "text", title: "7~9年", payload: "payload"},
+	      		{content_type: "text", title: "10年以上", payload: "payload"}
     		]
 		}
-		state_sender[sender] += 1;	
+		state_sender[sender] += 1;
 	}else{
 		messageData = {
 			text: "已完成問卷填寫。"
