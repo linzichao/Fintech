@@ -69,12 +69,16 @@ app.post('/webhook/', function (req, res) {
 			if(text === 'SQL'){
 				sendTextMessage(sender, sqlstr);
 			}
+
+			if(text === 'reset'){
+				state_sender[sender] = -1;
+			}
 			
 			//check if is lookup query
 			if (state_sender[sender] !== undefined && state_sender[sender] != 0){
 				demo_questionnaire(sender, text);
 			}else if (text.search("Get Started") != -1){
-				sendTextMessage(sender, "您好，林建甫。為了提供個人化投資助理服務。開始進行以下問卷:");	
+				sendTextMessage(sender, "您好，林建甫。為了提供個人化投資助理服務，開始進行以下問卷:");	
 				state_sender[sender] = 0;
 				demo_questionnaire(sender, text);
 			}else if (text.search("開始計時") != -1){
@@ -301,8 +305,6 @@ function demo_questionnaire(sender, rev) {
     		]
 		}
 		state_sender[sender] += 1;
-		
-	
 	}else if( state_sender[sender] == 7){
 		messagedata = {
 			text: "整體投資資產下跌超過15%，對您生活的影響程度為何?",
