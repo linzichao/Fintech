@@ -72,11 +72,11 @@ app.post('/webhook/', function (req, res) {
 			
 			//check if is lookup query
 			if (state_sender[sender] !== undefined && state_sender[sender] != 0){
-				demo_started(sender, text);
+				demo_questionnaire(sender, text);
 			}else if (text.search("Get Started") != -1){
-				sendTextMessage(sender, "你好，林建甫。歡迎使用投資助理。接下來開始進行偏好設定:");	
+				sendTextMessage(sender, "您好，林建甫。為了提供個人化投資助理服務。開始進行以下問卷:");	
 				state_sender[sender] = 0;
-				demo_started(sender, text);
+				demo_questionnaire(sender, text);
 			}else if (text.search("開始計時") != -1){
 				sendTextMessage(sender, "Started Timer!" + sender.toString());
 				StartAutoSending();
@@ -214,6 +214,142 @@ function demo_started(sender, rev) {
 
 }
 
+function demo_questionnaire(sender, rev) {
+	let messageData = {}
+	if(state_sender[sender] == 0){
+		messageData = {
+			text: "個人年收入(萬)?",
+    		quick_replies:[
+    	  		{content_type: "text", title: "0   ~ 50", payload: "payload"},
+	      		{content_type: "text", title: "51  ~ 100", payload: "payload"},
+	      		{content_type: "text", title: "101 ~ 300", payload: "payload"},
+	      		{content_type: "text", title: "301 ~ 800", payload: "payload"},
+	      		{content_type: "text", title: "> 801", payload: "payload"}
+    		]
+		}
+		state_sender[sender] += 1;
+	}else if( state_sender[sender] == 1){
+		messageData = {
+			text: "可以用作除儲蓄或投資的款項平均佔收入的百分比為?",
+    		quick_replies:[
+    	  		{content_type: "text", title: "< 5%", payload: "payload"},
+	      		{content_type: "text", title: "5% ~ 10%", payload: "payload"},
+	      		{content_type: "text", title: "11%~ 20%", payload: "payload"},
+	      		{content_type: "text", title: "21%~ 30%", payload: "payload"},
+	      		{content_type: "text", title: "> 31%", payload: "payload"}
+    		]
+		}
+		state_sender[sender] += 1;
+	}else if( state_sender[sender] == 2){
+		messageData = {
+			text: "打算用作為投資用途的款項平均佔您的總資產淨值中的百分比為（物業除外）?",
+    		quick_replies:[
+    	  		{content_type: "text", title: "< 5%", payload: "payload"},
+	      		{content_type: "text", title: "5% ~ 10%", payload: "payload"},
+	      		{content_type: "text", title: "11%~ 20%", payload: "payload"},
+	      		{content_type: "text", title: "21%~ 30%", payload: "payload"},
+	      		{content_type: "text", title: "> 31%", payload: "payload"}
+    		]
+		}
+		state_sender[sender] += 1;	
+	}else if( state_sender[sender] == 3){
+		messageData = {
+			text: "報酬通常伴隨著風險，若單由報酬區間來看，您會選擇哪一種投資組合?",
+    		quick_replies:[
+    	  		{content_type: "text", title: "± 3%", payload: "payload"},
+	      		{content_type: "text", title: "±10%", payload: "payload"},
+	      		{content_type: "text", title: "±15%", payload: "payload"},
+	      		{content_type: "text", title: "±25%", payload: "payload"},
+	      		{content_type: "text", title: "±40%", payload: "payload"}
+    		]
+		}
+		state_sender[sender] += 1;
+	}else if( state_sender[sender] == 4){
+		messageData = {
+			text: "投資收益的現金流量期望為何?",
+    		quick_replies:[
+    	  		{content_type: "text", title: "月配息", payload: "payload"},
+	      		{content_type: "text", title: "季配息", payload: "payload"},
+	      		{content_type: "text", title: "半年配息", payload: "payload"},
+	      		{content_type: "text", title: "年配息", payload: "payload"},
+	      		{content_type: "text", title: "無特殊固定配息", payload: "payload"}
+    		]
+		}
+		state_sender[sender] += 1;
+	}else if( state_sender[sender] == 5){
+		messageData = {
+			text: "投資經驗為何?",
+    		quick_replies:[
+    	  		{content_type: "text", title: "沒有經驗", payload: "payload"},
+	      		{content_type: "text", title: "1 ~ 3年", payload: "payload"},
+	      		{content_type: "text", title: "4 ~ 6年", payload: "payload"},
+	      		{content_type: "text", title: "7 ~ 9年", payload: "payload"},
+	      		{content_type: "text", title: "10年以上", payload: "payload"}
+    		]
+		}
+		state_sender[sender] += 1;
+	}else if( state_sender[sender] == 6){
+		messagedata = {
+			text: "曾投資過哪些金融商品?",
+    		quick_replies:[
+    	  		{content_type: "text", title: "台外幣存款、貨幣型基金、儲蓄型保險", payload: "payload"},
+	      		{content_type: "text", title: "債券、債券型基金", payload: "payload"},
+	      		{content_type: "text", title: "股票、股票型基金、etf", payload: "payload"},
+	      		{content_type: "text", title: "結構型商品、投資型保單", payload: "payload"},
+	      		{content_type: "text", title: "期貨、選擇權或其他衍生性金融商品", payload: "payload"},
+	      		{content_type: "text", title: "無", payload: "payload"}
+    		]
+		}
+		state_sender[sender] += 1;
+		
+	
+	}else if( state_sender[sender] == 7){
+		messagedata = {
+			text: "整體投資資產下跌超過15%，對您生活的影響程度為何?",
+    		quick_replies:[
+    	  		{content_type: "text", title: "無法承受", payload: "payload"},
+	      		{content_type: "text", title: "影響嚴重", payload: "payload"},
+	      		{content_type: "text", title: "影響大", payload: "payload"},
+	      		{content_type: "text", title: "影響小", payload: "payload"},
+	      		{content_type: "text", title: "無影響", payload: "payload"}
+    		]
+		}
+		state_sender[sender] += 1;	
+	}else if( state_sender[sender] == 8){
+		messagedata = {
+			text: "預計投資年限?",
+    		quick_replies:[
+    	  		{content_type: "text", title: "< 1年", payload: "payload"},
+	      		{content_type: "text", title: "1年（含）以上～未滿3年", payload: "payload"},
+	      		{content_type: "text", title: "3年（含）以上～未滿6年", payload: "payload"},
+	      		{content_type: "text", title: "6年（含）以上～未滿10年", payload: "payload"},
+	      		{content_type: "text", title: "> 10年", payload: "payload"}
+    		]
+		}
+		state_sender[sender] += 1;	
+	}else if( state_sender[sender] == 9){
+		messageData = {
+			text: "已完成初始偏好設定。"
+		}
+		state_sender[sender] = 0;
+	}
+
+	request({
+		url: 'https://graph.facebook.com/v2.6/me/messages',
+		qs: {access_token:token},
+		method: 'POST',
+		json: {
+			recipient: {id:sender},
+			message: messageData,
+		}
+	}, function(error, response, body) {
+		if (error) {
+			console.log('Error sending messages: ', error)
+		} else if (response.body.error) {
+			console.log('Error: ', response.body.error)
+		}
+	})
+}
 
 function sendBox(sender){
 	
