@@ -363,25 +363,51 @@ function sendBox(sender){
         		template_type: "list",
   				top_element_style: "LARGE",
   				elements: [{
-      				title: "Title Here",
-      				subtitle: "Subtitle Here",
-      				image_url: "https://s-media-cache-ak0.pinimg.com/originals/5a/04/4e/5a044eb1329ae9d8916131b92b44799b.jpg",          
-      				buttons: [{
-  						type:"element_share"
-					}]
+      				title: "擴產概念股帶財 盤面亮點",
+      				subtitle: "2017年的台股盤面由缺貨、漲價等題材主導，吸引市場買盤追捧，引動相關個股勁揚大漲。",
+      				image_url: "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2018/01/01/2/4385492.jpg",          
+					default_action: {
+        				type: "web_url",
+        				url: "https://money.udn.com/money/story/5607/2905408",
+        				messenger_extensions: "TRUE",
+        				webview_height_ratio: "FULL"
+      				}
     			},{
-      				title: "Title Here",
-      				subtitle: "Subtitle Here",
-      				image_url: "https://s-media-cache-ak0.pinimg.com/originals/5a/04/4e/5a044eb1329ae9d8916131b92b44799b.jpg",          
-      				buttons: [{
-  						type:"element_share"
-					}]
-    			}	
+      				title: "要買股票型基金還是債券型基金？",
+      				subtitle: "晨星（亞洲）台灣研究部12月26日發佈11月份基金市場月報發現，11月份股票型基金報酬率1.3％，比債券型基金的0.41％還好。",
+      				image_url: "http://www.wealth.com.tw/files/8cc31fda5a4c4201b2c8a33a1d185602.jpg",          
+					default_action: {
+        				type: "web_url",
+        				url: "http://www.wealth.com.tw/article_in.aspx?nid=13770",
+        				messenger_extensions: "TRUE",
+        				webview_height_ratio: "FULL"
+      				}
+				},{
+      				title: "伺服器掀換機潮 台廠旺年到",
+      				subtitle: "英特爾伺服器改款晶片將在2018年大量出貨，可望帶動一波伺服器換機潮",
+      				image_url: "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2017/12/31/2/4384122.jpg",          
+					default_action: {
+        				type: "web_url",
+        				url: "https://udn.com/news/story/7251/2904288",
+        				messenger_extensions: "TRUE",
+        				webview_height_ratio: "FULL"
+      				}
+				},{
+      				title: "六黑馬 問鼎十大高價股",
+      				subtitle: "台股前十大高價股因產業變化、市場投資氣氛改變而不斷洗牌。",
+      				image_url: "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2017/12/31/2/4384119.jpg",          
+					default_action: {
+        				type: "web_url",
+        				url: "https://udn.com/news/story/7251/2904308",
+        				messenger_extensions: "TRUE",
+        				webview_height_ratio: "FULL"
+      				}
+				}
 				],
    				buttons: [{
 					type: "web_url",
-					url: "https://www.google.com.tw/",
-					title: "more"
+					url: "https://tw.mobi.yahoo.com/finance",
+					title: "查看更多股市新聞"
 				}]
         	}
     	}
