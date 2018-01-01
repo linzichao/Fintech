@@ -358,7 +358,7 @@ function sendBox(sender){
 	
 	let messageData = {
 		attachment:{
-      		type:"template",
+      		type: "template",
       		payload:{
         		template_type: "list",
   				top_element_style: "LARGE",
@@ -368,13 +368,7 @@ function sendBox(sender){
       				image_url: "https://s-media-cache-ak0.pinimg.com/originals/5a/04/4e/5a044eb1329ae9d8916131b92b44799b.jpg",          
       				buttons: [{
   						type:"element_share"
-					}],
-      				default_action: {
-        				type: "web_url",
-        				url: "https://www.google.com.tw/",
-        				messenger_extensions: "FALSE",
-        				webview_height_ratio: "TALL"
-      				}
+					}]
     			}],
    				buttons: [{type: "element_share"}]
         	}
