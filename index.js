@@ -369,8 +369,20 @@ function sendBox(sender){
       				buttons: [{
   						type:"element_share"
 					}]
-    			}],
-   				buttons: [{type: "element_share"}]
+    			},{
+      				title: "Title Here",
+      				subtitle: "Subtitle Here",
+      				image_url: "https://s-media-cache-ak0.pinimg.com/originals/5a/04/4e/5a044eb1329ae9d8916131b92b44799b.jpg",          
+      				buttons: [{
+  						type:"element_share"
+					}]
+    			}	
+				],
+   				buttons: [{
+					type: "web_url",
+					url: "https://www.google.com.tw/",
+					title: "more"
+				}]
         	}
     	}
     
